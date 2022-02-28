@@ -15,10 +15,10 @@ const allPhones = () => {
 // allPhones();
 
 const displayPhoneResult = phones => {
-    
+
     const searchReasult = document.getElementById('search-result');
     phones.forEach(phone => {
-        console.log(phone);
+        // console.log(phone);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
@@ -29,7 +29,7 @@ const displayPhoneResult = phones => {
           <h5 class="card-title">Brand: ${phone.brand}</h5>
           <h3>Name: ${phone.phone_name}</h3>
           <p class="card-text fw-bold">${phone.slug}</p>
-          <button id="detailsBtn" onclick="detailsButton()" class="btn btn-outline-success px-3 fw-bold ">Details</button>
+          <button id="detailsBtn" onclick="loadPhoneDetail('${phone.slug}')" class="btn btn-outline-success px-3 fw-bold ">Details</button>
         </div>
       </div>
         
@@ -38,6 +38,34 @@ const displayPhoneResult = phones => {
 
     })
     
+}
+
+
+const loadPhoneDetail = phoneId => {
+    const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
+
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayPhoneDetails(data.data))
+    
+};
+
+const displayPhoneDetails = details => {
+    console.log(details);
+
+  const phoneDetails = document.getElementById('single-phone-detains');
+  const div = document.createElement('div');
+  div.classList.add('card');
+  div.innerHTML = `
+  
+  <img src="${details.image}" class="card-img-top w-25 mx-auto my-5" alt="...">
+  <div class="card-body">
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+
+  `;
+  phoneDetails.appendChild(div);
+
 }
 
 
