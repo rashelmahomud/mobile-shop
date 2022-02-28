@@ -17,8 +17,9 @@ const allPhones = () => {
 const displayPhoneResult = phones => {
 
     const searchReasult = document.getElementById('search-result');
+    // everty sercing updated code 
+    searchReasult.innerHTML = '';
     phones.forEach(phone => {
-        // console.log(phone);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
@@ -38,8 +39,7 @@ const displayPhoneResult = phones => {
 
     })
     
-}
-
+};
 
 const loadPhoneDetail = phoneId => {
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
@@ -54,6 +54,7 @@ const displayPhoneDetails = details => {
     console.log(details);
 
   const phoneDetails = document.getElementById('single-phone-detains');
+  phoneDetails.innerHTML = '';
   const div = document.createElement('div');
   div.classList.add('card');
   div.innerHTML = `
@@ -63,9 +64,15 @@ const displayPhoneDetails = details => {
     
     <div class="col-md-7">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text"></p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <h4>Brand Name: ${details.brand}</h4>
+        <h5 class="card-title">Model : ${details.name}</h5>
+        <p class="card-text">${details.releaseDate}</p>
+        <p>Storage: ${details.mainFeatures.storage}</p>
+        <span>ChipSet: ${details.mainFeatures.chipSet}</span>
+        <span>Disply Size: ${details.mainFeatures.displaySize}</span>
+        <span>Memory : ${details.mainFeatures.memory}</span>
+
+        <p class="card-text"><small class="text-muted">Date: ${details.releaseDate}</small></p>
       </div>
     </div>
     <div class="col-md-5">
