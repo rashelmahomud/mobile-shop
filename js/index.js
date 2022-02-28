@@ -50,6 +50,10 @@ const loadPhoneDetail = phoneId => {
     
 };
 
+
+
+// phone details code started here 
+
 const displayPhoneDetails = details => {
     console.log(details);
 
@@ -68,8 +72,10 @@ const displayPhoneDetails = details => {
         <h5 class="card-title">Model : ${details.name}</h5>
         <p class="card-text">${details.releaseDate}</p>
         <p>Storage: ${details.mainFeatures.storage}</p>
-        <span>ChipSet: ${details.mainFeatures.chipSet}</span>
-        <span>Disply Size: ${details.mainFeatures.displaySize}</span>
+        <span>ChipSet: ${details.mainFeatures.chipSet}</span></br>
+        <span>${details.others.Bluetooth}</span>
+        <span>usb: ${details.others.USB}</span></br>
+        <span>Disply Size: ${details.mainFeatures.displaySize}</span></br>
         <span>Memory : ${details.mainFeatures.memory}</span>
 
         <p class="card-text"><small class="text-muted">Date: ${details.releaseDate}</small></p>
