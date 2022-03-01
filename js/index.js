@@ -23,7 +23,7 @@ const displayPhoneResult = phones => {
 
   const searchReasult = document.getElementById('search-result');
 
-  //spinner show
+  //not found result show
   notFoundResult('block');
   // everty sercing updated code 
   searchReasult.innerHTML = '';
@@ -44,13 +44,12 @@ const displayPhoneResult = phones => {
         
         `;
     searchReasult.appendChild(div);
+
+    // not found result hidden
     notFoundResult('none');
   });
 
-
-
 };
-
 
 const loadPhoneDetail = phoneId => {
   const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
@@ -61,12 +60,10 @@ const loadPhoneDetail = phoneId => {
 
 };
 
-
-
 // phone details code started here 
 
 const displayPhoneDetails = details => {
-  // console.log(details);
+  console.log(details);
 
   const phoneDetails = document.getElementById('single-phone-detains');
   phoneDetails.innerHTML = '';
@@ -86,7 +83,17 @@ const displayPhoneDetails = details => {
         <span>ChipSet: ${details.mainFeatures.chipSet}</span></br>
         <span>${details.others.Bluetooth}</span>
         <span>usb: ${details.others.USB}</span></br>
+        <span>Wlan: ${details.others.WLAN}</span></br>
+        <span>Gps: ${details.others.GPS}</span></br>
         <span>Disply Size: ${details.mainFeatures.displaySize}</span></br>
+
+        <li>${details.mainFeatures.sensors[0]}</li>
+        <li>${details.mainFeatures.sensors[1]}</li>
+        <li>${details.mainFeatures.sensors[2]}</li>
+        <li>${details.mainFeatures.sensors[3]}</li>
+        <li>${details.mainFeatures.sensors[4]}</li>
+        <li>${details.mainFeatures.sensors[5]}</li>
+
         <span>Memory : ${details.mainFeatures.memory}</span>
 
         <p class="card-text"><small class="text-muted">Date: ${details.releaseDate}</small></p>
