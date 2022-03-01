@@ -64,6 +64,7 @@ const loadPhoneDetail = phoneId => {
 
 const displayPhoneDetails = details => {
   console.log(details);
+ 
 
   const phoneDetails = document.getElementById('single-phone-detains');
   phoneDetails.innerHTML = '';
@@ -104,7 +105,6 @@ const displayPhoneDetails = details => {
     </div>
   </div>
 </div>
-
 
   `;
   phoneDetails.appendChild(div);
