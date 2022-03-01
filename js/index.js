@@ -27,6 +27,7 @@ const displayPhoneResult = phones => {
   notFoundResult('block');
   // everty sercing updated code 
   searchReasult.innerHTML = '';
+
   phones.forEach(phone => {
     const div = document.createElement('div');
     div.classList.add('col');
@@ -44,6 +45,7 @@ const displayPhoneResult = phones => {
         
         `;
     searchReasult.appendChild(div);
+
 
     // not found result hidden
     notFoundResult('none');
@@ -64,7 +66,7 @@ const loadPhoneDetail = phoneId => {
 
 const displayPhoneDetails = details => {
   console.log(details);
- 
+
 
   const phoneDetails = document.getElementById('single-phone-detains');
   phoneDetails.innerHTML = '';
