@@ -1,28 +1,36 @@
 const allPhones = () => {
-    
-    const searchFeilds = document.getElementById('input-Feild');
-    const searchText = searchFeilds.value;
-    // console.log(searchText);
 
-    searchFeilds.value = '';
+  const searchFeilds = document.getElementById('input-Feild');
+  const searchText = searchFeilds.value;
+  // console.log(searchText);
 
-    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
-    fetch(url)
+  searchFeilds.value = '';
+
+  const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
+  fetch(url)
     .then(res => res.json())
     .then(data => displayPhoneResult(data.data))
 
 }
 // allPhones();
 
+const notFoundResult = displayStyle => {
+  document.getElementById('notFound').style.display = displayStyle;
+}
+
+
 const displayPhoneResult = phones => {
 
-    const searchReasult = document.getElementById('search-result');
-    // everty sercing updated code 
-    searchReasult.innerHTML = '';
-    phones.forEach(phone => {
-        const div = document.createElement('div');
-        div.classList.add('col');
-        div.innerHTML = `
+  const searchReasult = document.getElementById('search-result');
+
+  //spinner show
+  notFoundResult('block');
+  // everty sercing updated code 
+  searchReasult.innerHTML = '';
+  phones.forEach(phone => {
+    const div = document.createElement('div');
+    div.classList.add('col');
+    div.innerHTML = `
 
         <div class="card">
         <img src="${phone.image}" class="card-img-top w-25 mx-auto my-3" alt="...">
@@ -35,19 +43,22 @@ const displayPhoneResult = phones => {
       </div>
         
         `;
-        searchReasult.appendChild(div);
+    searchReasult.appendChild(div);
+    notFoundResult('none');
+  });
 
-    })
-    
+
+
 };
 
-const loadPhoneDetail = phoneId => {
-    const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
 
-    fetch(url)
+const loadPhoneDetail = phoneId => {
+  const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
+
+  fetch(url)
     .then(res => res.json())
     .then(data => displayPhoneDetails(data.data))
-    
+
 };
 
 
@@ -55,7 +66,7 @@ const loadPhoneDetail = phoneId => {
 // phone details code started here 
 
 const displayPhoneDetails = details => {
-    console.log(details);
+  // console.log(details);
 
   const phoneDetails = document.getElementById('single-phone-detains');
   phoneDetails.innerHTML = '';
